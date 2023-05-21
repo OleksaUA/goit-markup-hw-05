@@ -591,7 +591,7 @@ overflow: hidden;
 }
 
 .card-link-style:hover .overlay,
-.card-link-stile:focus .overlay {
+.card-link-style:focus .overlay {
   transform: translateY(0%);
 }
 
