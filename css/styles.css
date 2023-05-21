@@ -81,7 +81,8 @@ body {
 
 .page-header {
   border-bottom: 1px solid #e7e9fc;
-  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 .page-navigation {
@@ -130,6 +131,9 @@ body {
   color: var(--primary-background-color-theme-dark);
   padding: 24px 0;
   display: block;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu-list-item:hover,
 .menu-list-item:focus {
@@ -147,10 +151,29 @@ body {
   letter-spacing: 0.02em;
   margin-left: auto;
   color: var(--primary-text-color-theme-dark);
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-item:hover,
 .contact-item:focus {
   color: var(--accent-color);
+}
+
+.current-page {
+  color: #404bbf;
+  position: relative;
+}
+.current-page::after {
+  content: ' ';
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  bottom: -1px;
+  left: 0px;
+  display: block;
+  position: absolute;
 }
 
 /* Main Studio*/
@@ -200,6 +223,9 @@ body {
   margin-right: auto;
   margin-top: 48px;
   border: none;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .order-btn:hover,
 .order-btn:focus {
@@ -326,6 +352,9 @@ body {
   border-radius: 50%;
   background-color: #4d5ae5;
   fill: #f4f4fd;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-list-link:hover,
@@ -362,6 +391,9 @@ body {
   border-radius: 4px;
   border: 1px solid #8e8f99;
   color: var(--icon-color);
+  transition-property: color, border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-list-link:hover,
@@ -422,6 +454,12 @@ body {
 .footer-social-container {
   display: inline-block;
 }
+
+.footer-social-list {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
 .footer-social-list-link {
   display: flex;
   justify-content: center;
@@ -431,19 +469,17 @@ body {
   border-radius: 50%;
   background-color: #4d5ae5;
   fill: #f4f4fd;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.footer-social-list {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
+
 .footer-social-list-link:hover,
 .footer-social-list-link:focus {
   background-color: #31d0aa;
 }
 
 .footer-social-link-container {
-
 }
 /* PORTFOLIO */
 
@@ -474,15 +510,18 @@ body {
   border: 1px solid var(--btn-border-color-light);
   border-radius: 4px;
   padding: 12px 24px;
+  transition-property: background-color, box-shadow, border-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .main-nav:hover,
 .main-nav:focus {
   border-color: transparent;
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
   background-color: var(--accent-color);
   color: var(--main-color);
-
 }
 
 .card-desc {
@@ -515,12 +554,48 @@ body {
 .card-section-item {
   flex-basis: calc((100% - 48px) / 3);
 }
- 
+
 .card-link-style {
   display: block;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-link-style:hover, 
+.card-link-style:hover,
 .card-link-style:focus {
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+
+.card-link-style-wrapper {
+position: relative;
+overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  padding: 40px 32px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  transform: translate(0px, 100%);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  background-color: #4d5ae5;
+  color: #f4f4fd;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  
+}
+
+.card-link-style:hover .overlay,
+.card-link-stile:focus .overlay {
+  transform: translateY(0%);
 }
